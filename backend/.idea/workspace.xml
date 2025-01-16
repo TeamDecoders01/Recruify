@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a8d1d7c3-5ecb-4d38-806d-f43db4d88aa9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/controller/JobController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/model/Job.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/repository/JobRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/request/JobRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/response/JobResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/service/JobService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/RecruifyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/RecruifyApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/model/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/request/SignupRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/decoders/recruify/request/SignupRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/app/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +106,9 @@
       <workItem from="1736693332897" duration="991000" />
       <workItem from="1736765762694" duration="3970000" />
       <workItem from="1736771078255" duration="1076000" />
-      <workItem from="1736772332318" duration="3723000" />
+      <workItem from="1736772332318" duration="7425000" />
+      <workItem from="1736856334987" duration="6253000" />
+      <workItem from="1737018568335" duration="5033000" />
     </task>
     <servers />
   </component>
