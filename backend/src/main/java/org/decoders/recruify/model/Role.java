@@ -1,6 +1,6 @@
 package org.decoders.recruify.model;
 
 public enum Role {
-    RECRUITER,
-    CANDIDATE
+    ROLE_RECRUITER,
+    ROLE_CANDIDATE
 }

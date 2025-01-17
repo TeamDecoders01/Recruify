@@ -11,8 +11,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "full_name", nullable = false)
-    private String fullName;
+    @Column(name = "user_name", nullable = false)
+    private String userName;
 
     @Column(nullable = false, unique = true)
     private String email;
@@ -22,4 +22,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @Column(name = "full_name")
+    private String fullName;
 }
