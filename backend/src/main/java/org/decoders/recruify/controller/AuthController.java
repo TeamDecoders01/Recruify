@@ -58,18 +58,19 @@ public class AuthController {
             User newUser = new User();
             newUser.setEmail(signupRequest.getEmail());
             newUser.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
+            newUser.setUserName(signupRequest.getUserName());
             newUser.setFullName(signupRequest.getFullName());
-
 
             Role roles;
             if ("recruiter".equalsIgnoreCase(signupRequest.getUserType())) {
-                roles = Role.RECRUITER;
+                roles = Role.ROLE_RECRUITER;
             } else if ("candidate".equalsIgnoreCase(signupRequest.getUserType())) {
-                roles = Role.CANDIDATE;
+                roles = Role.ROLE_CANDIDATE;
             } else {
                 return new ResponseEntity<>("Invalid user type", HttpStatus.BAD_REQUEST);
             }
             newUser.setRole(roles);
+
 
             User savedUser = userRepository.save(newUser);
 
@@ -82,7 +83,7 @@ public class AuthController {
             response.setJwt(jwt);
             response.setMessage("Signup successful");
             response.setEmail(savedUser.getEmail());
-            response.setFullName(savedUser.getFullName());
+            response.setFullName(savedUser.getUserName());
             response.setRoles(roles.name());
             response.setUserType(signupRequest.getUserType());
 
@@ -106,9 +107,9 @@ public class AuthController {
             response.setJwt(jwt);
             response.setMessage("Login successful");
             response.setEmail(user.getEmail());
-            response.setFullName(user.getFullName());
+            response.setFullName(user.getUserName());
             response.setRoles(user.getRole().name());
-            response.setUserType(user.getRole() == Role.RECRUITER ? "recruiter" : "candidate");
+            response.setUserType(user.getRole() == Role.ROLE_RECRUITER ? "recruiter" : "candidate");
             return new ResponseEntity<>(response, HttpStatus.OK);
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>("Invalid credentials", HttpStatus.UNAUTHORIZED);
