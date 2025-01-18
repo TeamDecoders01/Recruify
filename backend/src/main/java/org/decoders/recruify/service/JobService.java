@@ -1,17 +1,18 @@
 package org.decoders.recruify.service;
 
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.decoders.recruify.model.Job;
 import org.decoders.recruify.model.User;
 import org.decoders.recruify.repository.JobRepository;
 import org.decoders.recruify.repository.UserRepository;
 import org.decoders.recruify.request.JobRequest;
 import org.decoders.recruify.response.JobResponse;
-import org.springframework.stereotype.Service;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -40,9 +41,9 @@ public class JobService {
         }
 
         return jobRepository.findByRecruiterIdOrderByCreatedAtDesc(recruiter.getId())
-            .stream()
-            .map(this::mapJobToJobResponse)
-            .collect(Collectors.toList());
+                .stream()
+                .map(this::mapJobToJobResponse)
+                .collect(Collectors.toList());
     }
 
     public JobResponse getJobById(Long jobId, String recruiterEmail) {
@@ -65,7 +66,7 @@ public class JobService {
 
     private Job validateAndGetJob(Long jobId, String recruiterEmail) {
         Job job = jobRepository.findById(jobId)
-            .orElseThrow(() -> new RuntimeException("Job not found"));
+                .orElseThrow(() -> new RuntimeException("Job not found"));
 
         if (!job.getRecruiter().getEmail().equals(recruiterEmail)) {
             throw new RuntimeException("Not authorized to access this job");

@@ -1,6 +1,5 @@
 package org.decoders.recruify.repository;
 
-
 import org.decoders.recruify.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

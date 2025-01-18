@@ -1,5 +1,7 @@
 package org.decoders.recruify.controller;
 
+import java.util.List;
+
 import org.decoders.recruify.config.JwtProvider;
 import org.decoders.recruify.model.Role;
 import org.decoders.recruify.model.User;
@@ -24,8 +26,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -35,8 +35,10 @@ public class AuthController {
     private PasswordEncoder passwordEncoder;
 
     private CustomUserDetailsImpl customUserDetails;
+
     @Autowired
-    public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder, CustomUserDetailsImpl customUserDetails, AuthenticationManager authenticationManager) {
+    public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder,
+            CustomUserDetailsImpl customUserDetails, AuthenticationManager authenticationManager) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.customUserDetails = customUserDetails;
@@ -71,10 +73,10 @@ public class AuthController {
             }
             newUser.setRole(roles);
 
-
             User savedUser = userRepository.save(newUser);
 
-            Authentication authentication = new UsernamePasswordAuthenticationToken(savedUser.getEmail(), signupRequest.getPassword(), List.of(new SimpleGrantedAuthority(roles.name())));
+            Authentication authentication = new UsernamePasswordAuthenticationToken(savedUser.getEmail(),
+                    signupRequest.getPassword(), List.of(new SimpleGrantedAuthority(roles.name())));
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
@@ -96,7 +98,8 @@ public class AuthController {
     @PostMapping("/signin")
     public ResponseEntity<?> signin(@RequestBody LoginRequest loginRequest) {
         try {
-            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
@@ -117,7 +120,6 @@ public class AuthController {
             return new ResponseEntity<>("Error during signin: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
     private Authentication authenticate(String username, String password) {
         UserDetails userDetails = customUserDetails.loadUserByUsername(username);

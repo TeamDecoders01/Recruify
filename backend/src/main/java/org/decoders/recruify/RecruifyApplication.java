@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class RecruifyApplication {
     public static void main(String[] args) {
-        Dotenv dotenv = Dotenv.configure().load();
+        Dotenv.configure().directory("backend").load().entries()
+                .forEach(entry -> System.setProperty(entry.getKey(), entry.getValue()));
         SpringApplication.run(RecruifyApplication.class, args);
     }
 }
-
